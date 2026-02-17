@@ -1,6 +1,23 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "ABOUT_US" : {
+      "comment" : "Hakkımızda",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About Us"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakkımızda"
+          }
+        }
+      }
+    },
     "CHANGE_LANGUAGE" : {
       "comment" : "Dil Değiştir",
       "localizations" : {
