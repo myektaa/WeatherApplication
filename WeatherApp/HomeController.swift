@@ -14,3 +14,8 @@ class HomeController: UIViewController {
         
     }
 }
+
+
+#Preview {
+    HomeController()
+}
