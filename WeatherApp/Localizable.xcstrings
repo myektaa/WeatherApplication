@@ -18,6 +18,40 @@
         }
       }
     },
+    "ABOUT_US_TEXT" : {
+      "comment" : "Hakkında Metni",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's not just about the temperature, but also about what awaits you when you go out and how it can change your day planning.\n\nDailyWeather, is a life experience that presents the weather not just with cold data and complex compartments, but with a direct connection to real life. It answers everyday life and practical questions like, 'Will it be sunny in the morning but windy in the evening?', 'What clothes will keep me comfortable all day?', instead of relying solely on traditional forecast dates.\n\nOur app tracks details to protect your health, from pollen density to UV index, while providing updates on micro-climate characteristics you might encounter during your travels thanks to advanced route currents. Furthermore, our section-focused “Live Reports” system lets you know about impending hailstorms in your neighborhood or weather changes on your street with instant notifications from users.\n\nOur goal is to keep you prepared, safe, and informed not only for future rain, but for all kinds of weather surprises. By combining technology with human-centered design, we make changes in the sky a planned part of your life, rather than an obstacle."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadece kaç derece olduğunu değil, dışarı çıktığınızda sizi nelerin beklediğini ve gününüzü nasıl planlamanız gerektiğini bilmek ister misiniz?\n\nDaily Weather, hava durumunu sadece soğuk veriler ve karmaşık grafiklerle değil, doğrudan gerçek hayatla olan bağlantısıyla sunan bir yaşam asistanıdır. Geleneksel tahminlerin ötesine geçerek; 'Sabah güneşli ama akşam rüzgarlı mı olacak?', 'Hangi kıyafet beni gün boyu konforlu tutar?' gibi günlük hayatın en pratik sorularına yanıt verir.\n\nUygulamamız, polen yoğunluğundan UV indeksine kadar sağlığınızı etkileyebilecek detayları takip ederken; gelişmiş rota algoritması sayesinde yolculuklarınız boyunca karşılaşabileceğiniz mikro-klima değişikliklerini önceden haber verir. Ayrıca, topluluk odaklı “Canlı Raporlar” sistemimizle, mahallenizde aniden bastıran bir dolu yağışını veya sokağınızdaki hava değişimini kullanıcılarımızdan gelen anlık bildirimlerle öğrenmenizi sağlarız.\n\nAmacımız; sizi sadece yaklaşan bir yağmura karşı değil, her türlü hava sürprizine karşı hazırlıklı, güvende ve bilgili tutmaktır. Teknolojiyi insan odaklı tasarımla birleştirerek, gökyüzündeki değişimleri hayatınızın bir engelinden ziyade, planlı bir parçası haline getiriyoruz."
+          }
+        }
+      }
+    },
+    "ABOUT_US_TITLE" : {
+      "comment" : "Hakkımızda Başlığı",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look Beyond The Weather"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Havanın Ötesine Bak"
+          }
+        }
+      }
+    },
     "CHANGE_LANGUAGE" : {
       "comment" : "Dil Değiştir",
       "localizations" : {
@@ -133,6 +167,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gizlilik Politikası"
+          }
+        }
+      }
+    },
+    "PRIVACY_POLICY_DESCRIPTION" : {
+      "comment" : "Gizlilik Politikamızın Metni",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At DailyWeather, the security and privacy of your personal data is our top priority. Here are the core principles we follow to improve your experience using our app:\n\nData Usage: Our app only needs your location data to provide you with the most accurate weather forecasts and to notify you of weather changes along your chosen route.\n\nTransparency: Collected location information is only shared with weather services; it is never sold to advertising networks or third-party data companies.\n\nSecurity: All data flows within the app are protected in accordance with current security standards.\n\nUser Control: You can manage location permissions or turn off notifications at any time from your device's settings.\n\nWe are here to provide you with a safer and smarter weather experience. You can always contact us with any questions."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DailyWeather olarak, kişisel verilerinizin güvenliği ve gizliliği bizim önceliğimizdir. Uygulamamızı kullanırken deneyiminizi iyileştirmek adına izlediğimiz temel prensipler şunlardır:\n\nVeri Kullanımı: Uygulamamız, yalnızca size en doğru hava durumu tahminlerini sunmak ve seçtiğiniz rotadaki hava değişimlerini bildirmek amacıyla konum verilerinize ihtiyaç duyar.\n\nŞeffaflık: Toplanan konum bilgileri sadece hava durumu servisleriyle paylaşılır; reklam ağları veya üçüncü taraf veri şirketlerine asla satılmaz.\n\nGüvenlik: Uygulama içindeki tüm veri akışları güncel güvenlik standartlarına uygun olarak korunur.\n\nKullanıcı Kontrolü: İstediğiniz zaman cihazınızın ayarlar kısmından konum izinlerini yönetebilir veya bildirimleri kapatabilirsiniz.\n\nSizlere daha güvenli ve akıllı bir hava durumu deneyimi sunmak için buradayız. Sorularınız için bizimle her zaman iletişime geçebilirsiniz."
           }
         }
       }

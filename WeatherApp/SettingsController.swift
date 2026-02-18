@@ -38,6 +38,12 @@ class SettingsController: UIViewController {
         UserDefaults.standard.set(sender.isOn, forKey: "isDarkMode")
     }
     
+    @objc private func changeLanguage() {
+        if let url = URL(string: UIApplication.openSettingsURLString){
+            UIApplication.shared.open(url)
+        }
+    }
+    
     private func setupUI() {
         view.addSubview(settingsTableView)
         settingsTableView.delegate = self
@@ -89,6 +95,24 @@ extension SettingsController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionsTitle[section]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            changeLanguage()
+        } else if indexPath.section == 2 {
+            let about = AboutController()
+            about.modalPresentationStyle = .pageSheet
+            self.present(about, animated: true, completion: nil)
+        } else if indexPath.section == 3 {
+            let privacy = PrivacyPolicyController()
+            privacy.modalPresentationStyle = .pageSheet
+            self.present(privacy, animated: true, completion: nil)
+        } else {
+            print("Bizi Puanlayın kısmına tıklandı.")
+        }
     }
     
 }
