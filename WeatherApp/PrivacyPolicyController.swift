@@ -11,6 +11,8 @@ import UIKit
 class PrivacyPolicyController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .init(named: "DeepCharcoal")
         setupUI()
     }
     
@@ -31,14 +33,33 @@ class PrivacyPolicyController: UIViewController {
         return label
     }()
     
+    private let dismissButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(systemName: "multiply")!
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc private func dismissTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     private func setupUI() {
+        view.addSubview(dismissButton)
         view.addSubview(privacyPolicyTitle)
         view.addSubview(privacyPolicyDescription)
         
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
         privacyPolicyTitle.translatesAutoresizingMaskIntoConstraints = false
         privacyPolicyDescription.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            dismissButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: 100),
+            dismissButton.heightAnchor.constraint(equalToConstant: 30),
+            dismissButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -120),
+            dismissButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            
             privacyPolicyTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             privacyPolicyTitle.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             

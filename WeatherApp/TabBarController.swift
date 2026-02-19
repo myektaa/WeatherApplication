@@ -41,6 +41,11 @@ class TabBarController: UITabBarController {
         nav3.navigationBar.prefersLargeTitles = true
         nav4.navigationBar.prefersLargeTitles = true
         
+        nav1.navigationBar.isUserInteractionEnabled = false
+        nav2.navigationBar.isUserInteractionEnabled = false
+        nav3.navigationBar.isUserInteractionEnabled = false
+        nav4.navigationBar.isUserInteractionEnabled = false
+        
         setViewControllers([nav1, nav2, nav3, nav4], animated: true)
         
     }

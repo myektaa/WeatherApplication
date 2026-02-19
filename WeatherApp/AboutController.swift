@@ -10,8 +10,9 @@ import UIKit
 
 class AboutController: UIViewController {
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .init(named: "DeepCharcoal")
         setupUI()
     }
     
@@ -70,7 +71,7 @@ class AboutController: UIViewController {
         NSLayoutConstraint.activate([
             dismissButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: 100),
             dismissButton.heightAnchor.constraint(equalToConstant: 30),
-            dismissButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -320),
+            dismissButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -120),
             dismissButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             
             aboutTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),

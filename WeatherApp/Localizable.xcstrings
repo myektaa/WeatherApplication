@@ -52,6 +52,23 @@
         }
       }
     },
+    "ARRIVAL" : {
+      "comment" : "Varış:",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrival:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varış:"
+          }
+        }
+      }
+    },
     "CHANGE_LANGUAGE" : {
       "comment" : "Dil Değiştir",
       "localizations" : {
@@ -228,7 +245,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rate Us"
+            "value" : "Rate Us ⭐️"
           }
         },
         "tr" : {
@@ -252,6 +269,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ayarlar"
+          }
+        }
+      }
+    },
+    "START" : {
+      "comment" : "Başlangıç:",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç:"
           }
         }
       }
