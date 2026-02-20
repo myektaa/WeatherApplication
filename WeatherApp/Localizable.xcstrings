@@ -306,6 +306,12 @@
           }
         }
       }
+    },
+    "WEATHER_ALERT_DESCRIPTION" : {
+      "comment" : "Hava Alarmı Açıklaması"
+    },
+    "WEATHER_ALERT_TITLE" : {
+      "comment" : "Hava Alarmı Başlığı"
     }
   },
   "version" : "1.1"

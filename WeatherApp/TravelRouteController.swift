@@ -77,7 +77,7 @@ class TravelRouteController: UIViewController, UISearchTextFieldDelegate {
     private let contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 20
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         return stackView
@@ -86,7 +86,7 @@ class TravelRouteController: UIViewController, UISearchTextFieldDelegate {
     private let alertWeatherImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "exclamationmark.circle")
+        imageView.image = UIImage(named: "sungerBob")
         return imageView
     }()
     
@@ -98,10 +98,85 @@ class TravelRouteController: UIViewController, UISearchTextFieldDelegate {
         return view
     }()
     
-    private let alertWeatherLabel: UILabel = {
+    private let alertWeatherLabelTitle: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("WEATHER_ALERT", comment: "Hava Alarmı")
-        label.textColor = .white
+        label.text = NSLocalizedString("WEATHER_ALERT_TITLE", comment: "Hava Alarmı Başlığı")
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let alertWeatherLabelDescription: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("WEATHER_ALERT_DESCRIPTION", comment: "Hava Alarmı Açıklaması")
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let alertWeatherImage2: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "sungerBob")
+        return imageView
+    }()
+    
+    private let alertWeatherView2: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    private let alertWeatherLabelTitle2: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("WEATHER_ALERT_TITLE", comment: "Hava Alarmı Başlığı")
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let alertWeatherLabelDescription2: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("WEATHER_ALERT_DESCRIPTION", comment: "Hava Alarmı Açıklaması")
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let alertWeatherImage3: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "sungerBob")
+        return imageView
+    }()
+    
+    private let alertWeatherView3: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    private let alertWeatherLabelTitle3: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("WEATHER_ALERT_TITLE", comment: "Hava Alarmı Başlığı")
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let alertWeatherLabelDescription3: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("WEATHER_ALERT_DESCRIPTION", comment: "Hava Alarmı Açıklaması")
+        label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -114,9 +189,22 @@ class TravelRouteController: UIViewController, UISearchTextFieldDelegate {
         view.addSubview(arrivalTextField)
         view.addSubview(scrollView)
         scrollView.addSubview(contentStackView)
-        scrollView.addSubview(alertWeatherImage)
-        scrollView.addSubview(alertWeatherView)
-        scrollView.addSubview(alertWeatherLabel)
+        
+        contentStackView.addArrangedSubview(alertWeatherView)
+        alertWeatherView.addSubview(alertWeatherImage)
+        alertWeatherView.addSubview(alertWeatherLabelTitle)
+        alertWeatherView.addSubview(alertWeatherLabelDescription)
+        
+        contentStackView.addArrangedSubview(alertWeatherView2)
+        alertWeatherView2.addSubview(alertWeatherImage2)
+        alertWeatherView2.addSubview(alertWeatherLabelTitle2)
+        alertWeatherView2.addSubview(alertWeatherLabelDescription2)
+        
+        contentStackView.addArrangedSubview(alertWeatherView3)
+        alertWeatherView3.addSubview(alertWeatherImage3)
+        alertWeatherView3.addSubview(alertWeatherLabelTitle3)
+        alertWeatherView3.addSubview(alertWeatherLabelDescription3)
+        
         
         startTextField.delegate = self
         arrivalTextField.delegate = self
@@ -129,7 +217,18 @@ class TravelRouteController: UIViewController, UISearchTextFieldDelegate {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         alertWeatherImage.translatesAutoresizingMaskIntoConstraints = false
         alertWeatherView.translatesAutoresizingMaskIntoConstraints = false
-        alertWeatherLabel.translatesAutoresizingMaskIntoConstraints = false
+        alertWeatherLabelTitle.translatesAutoresizingMaskIntoConstraints = false
+        alertWeatherLabelDescription.translatesAutoresizingMaskIntoConstraints = false
+        
+        alertWeatherImage2.translatesAutoresizingMaskIntoConstraints = false
+        alertWeatherView2.translatesAutoresizingMaskIntoConstraints = false
+        alertWeatherLabelTitle2.translatesAutoresizingMaskIntoConstraints = false
+        alertWeatherLabelDescription2.translatesAutoresizingMaskIntoConstraints = false
+        
+        alertWeatherImage3.translatesAutoresizingMaskIntoConstraints = false
+        alertWeatherView3.translatesAutoresizingMaskIntoConstraints = false
+        alertWeatherLabelTitle3.translatesAutoresizingMaskIntoConstraints = false
+        alertWeatherLabelDescription3.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -164,11 +263,47 @@ class TravelRouteController: UIViewController, UISearchTextFieldDelegate {
             // Sadece YATAY kaydırmayı kapatıp DİKEY kaydırma yapmak için genişliği sabitliyoruz
             contentStackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
             
-            alertWeatherView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 30),
-            alertWeatherView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            alertWeatherView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            alertWeatherView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+            alertWeatherView.heightAnchor.constraint(equalToConstant: 70),
             
+            alertWeatherImage.topAnchor.constraint(equalTo: alertWeatherView.topAnchor, constant: 10),
+            alertWeatherImage.leadingAnchor.constraint(equalTo: alertWeatherView.leadingAnchor, constant: 10),
+            alertWeatherImage.widthAnchor.constraint(equalToConstant: 50),
+            alertWeatherImage.heightAnchor.constraint(equalToConstant: 50),
+            
+            alertWeatherLabelTitle.topAnchor.constraint(equalTo: alertWeatherView.topAnchor, constant: 10),
+            alertWeatherLabelTitle.leadingAnchor.constraint(equalTo: alertWeatherImage.trailingAnchor, constant: 10),
+            
+            alertWeatherLabelDescription.topAnchor.constraint(equalTo: alertWeatherLabelTitle.bottomAnchor, constant: 5),
+            alertWeatherLabelDescription.leadingAnchor.constraint(equalTo: alertWeatherImage.trailingAnchor, constant: -15),
+            alertWeatherLabelDescription.trailingAnchor.constraint(equalTo: alertWeatherView.trailingAnchor, constant: -10),
+            
+            alertWeatherView2.heightAnchor.constraint(equalToConstant: 70),
+            
+            alertWeatherImage2.topAnchor.constraint(equalTo: alertWeatherView2.topAnchor, constant: 10),
+            alertWeatherImage2.leadingAnchor.constraint(equalTo: alertWeatherView2.leadingAnchor, constant: 10),
+            alertWeatherImage2.widthAnchor.constraint(equalToConstant: 50),
+            alertWeatherImage2.heightAnchor.constraint(equalToConstant: 50),
+            
+            alertWeatherLabelTitle2.topAnchor.constraint(equalTo: alertWeatherView2.topAnchor, constant: 10),
+            alertWeatherLabelTitle2.leadingAnchor.constraint(equalTo: alertWeatherImage2.trailingAnchor, constant: 10),
+            
+            alertWeatherLabelDescription2.topAnchor.constraint(equalTo: alertWeatherLabelTitle2.bottomAnchor, constant: 5),
+            alertWeatherLabelDescription2.leadingAnchor.constraint(equalTo: alertWeatherImage2.trailingAnchor, constant: -15),
+            alertWeatherLabelDescription2.trailingAnchor.constraint(equalTo: alertWeatherView2.trailingAnchor, constant: -10),
+            
+            alertWeatherView3.heightAnchor.constraint(equalToConstant: 70),
+            
+            alertWeatherImage3.topAnchor.constraint(equalTo: alertWeatherView3.topAnchor, constant: 10),
+            alertWeatherImage3.leadingAnchor.constraint(equalTo: alertWeatherView3.leadingAnchor, constant: 10),
+            alertWeatherImage3.widthAnchor.constraint(equalToConstant: 50),
+            alertWeatherImage3.heightAnchor.constraint(equalToConstant: 50),
+            
+            alertWeatherLabelTitle3.topAnchor.constraint(equalTo: alertWeatherView3.topAnchor, constant: 10),
+            alertWeatherLabelTitle3.leadingAnchor.constraint(equalTo: alertWeatherImage3.trailingAnchor, constant: 10),
+            
+            alertWeatherLabelDescription3.topAnchor.constraint(equalTo: alertWeatherLabelTitle3.bottomAnchor, constant: 5),
+            alertWeatherLabelDescription3.leadingAnchor.constraint(equalTo: alertWeatherImage3.trailingAnchor, constant: -15),
+            alertWeatherLabelDescription3.trailingAnchor.constraint(equalTo: alertWeatherView3.trailingAnchor, constant: -10)
         ])
     }
     
