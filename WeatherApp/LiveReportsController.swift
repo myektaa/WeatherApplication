@@ -14,6 +14,8 @@ class LiveReportsController: UIViewController {
     private var isRainySelected = false
     private var isSnowSelected = false
     private var isHailSelected = false
+    private var isWindySelected = false
+    private var isFoggySelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,19 +135,134 @@ class LiveReportsController: UIViewController {
         }
     }
     
+    private let stackViewWeather: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 16
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    private let windyImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "windy"))
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private let windyLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("WINDY", comment: "Rüzgarlı")
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        return label
+    }()
+    
+    private lazy var windyButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitleColor(.white, for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .systemGray
+        button.layer.cornerRadius = 16
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(windyButtonTapped), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    @objc private func windyButtonTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        self.isWindySelected = sender.isSelected
+        
+        if sender.isSelected {
+            sender.backgroundColor = .systemBlue
+        } else {
+            sender.backgroundColor = .systemGray
+        }
+    }
+    
+    private let foggyImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "foggy"))
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private let foggyLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("FOGGY", comment: "Sisli")
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        return label
+    }()
+    
+    private lazy var foggyButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitleColor(.white, for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .systemGray
+        button.layer.cornerRadius = 16
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(foggyButtonTapped), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    @objc private func foggyButtonTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        self.isFoggySelected = sender.isSelected
+        
+        if sender.isSelected {
+            sender.backgroundColor = .systemBlue
+        } else {
+            sender.backgroundColor = .systemGray
+        }
+    }
+    
+    private let stackViewWeather2: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 16
+        stackView.distribution = .fillProportionally
+        return stackView
+    }()
+    
     private func setupUI() {
-        view.addSubview(rainyButton)
-        view.addSubview(rainyImageView)
-        view.addSubview(rainyLabel)
         
-        view.addSubview(snowButton)
-        view.addSubview(snowImageView)
-        view.addSubview(snowLabel)
+        let rainyGroup = UIView()
+        rainyGroup.addSubview(rainyButton)
+        rainyGroup.addSubview(rainyImageView)
+        rainyGroup.addSubview(rainyLabel)
         
-        view.addSubview(hailButton)
-        view.addSubview(hailImageView)
-        view.addSubview(hailLabel)
+        let snowGroup = UIView()
+        snowGroup.addSubview(snowButton)
+        snowGroup.addSubview(snowImageView)
+        snowGroup.addSubview(snowLabel)
         
+        
+        let hailGroup = UIView()
+        hailGroup.addSubview(hailButton)
+        hailGroup.addSubview(hailImageView)
+        hailGroup.addSubview(hailLabel)
+        
+        view.addSubview(stackViewWeather)
+        
+        stackViewWeather.addArrangedSubview(rainyGroup)
+        stackViewWeather.addArrangedSubview(snowGroup)
+        stackViewWeather.addArrangedSubview(hailGroup)
+        
+        let windyGroup = UIView()
+        windyGroup.addSubview(windyButton)
+        windyGroup.addSubview(windyImageView)
+        windyGroup.addSubview(windyLabel)
+        
+        let foggyGroup = UIView()
+        foggyGroup.addSubview(foggyButton)
+        foggyGroup.addSubview(foggyImageView)
+        foggyGroup.addSubview(foggyLabel)
+        
+        view.addSubview(stackViewWeather2)
+        
+        stackViewWeather2.addArrangedSubview(windyGroup)
+        stackViewWeather2.addArrangedSubview(foggyGroup)
         
         rainyButton.translatesAutoresizingMaskIntoConstraints = false
         rainyImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -159,49 +276,93 @@ class LiveReportsController: UIViewController {
         hailImageView.translatesAutoresizingMaskIntoConstraints = false
         hailLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        stackViewWeather.translatesAutoresizingMaskIntoConstraints = false
+        
+        windyLabel.translatesAutoresizingMaskIntoConstraints = false
+        windyImageView.translatesAutoresizingMaskIntoConstraints = false
+        windyButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        foggyLabel.translatesAutoresizingMaskIntoConstraints = false
+        foggyImageView.translatesAutoresizingMaskIntoConstraints = false
+        foggyButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackViewWeather2.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            rainyImageView.topAnchor.constraint(equalTo: rainyButton.bottomAnchor, constant: -140),
-            rainyImageView.heightAnchor.constraint(equalToConstant: 90),
-            rainyImageView.leadingAnchor.constraint(equalTo: rainyButton.leadingAnchor, constant: -30),
-            rainyImageView.trailingAnchor.constraint(equalTo: rainyButton.trailingAnchor, constant: 30),
+            rainyButton.topAnchor.constraint(equalTo: rainyGroup.topAnchor),
+            rainyButton.bottomAnchor.constraint(equalTo: rainyGroup.bottomAnchor),
+            rainyButton.leadingAnchor.constraint(equalTo: rainyGroup.leadingAnchor),
+            rainyButton.trailingAnchor.constraint(equalTo: rainyGroup.trailingAnchor),
             
-            rainyLabel.topAnchor.constraint(equalTo: rainyImageView.bottomAnchor, constant: 15),
-            rainyLabel.leadingAnchor.constraint(equalTo: rainyButton.leadingAnchor, constant: 35),
-            rainyLabel.trailingAnchor.constraint(equalTo: rainyButton.trailingAnchor, constant: -35),
+            rainyImageView.topAnchor.constraint(equalTo: rainyGroup.topAnchor, constant: 15),
+            rainyImageView.centerXAnchor.constraint(equalTo: rainyGroup.centerXAnchor),
+            rainyImageView.heightAnchor.constraint(equalToConstant: 80),
+            rainyImageView.widthAnchor.constraint(equalToConstant: 80),
             
-            rainyButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
-            rainyButton.heightAnchor.constraint(equalToConstant: 150),
-            rainyButton.widthAnchor.constraint(equalToConstant: 125),
-            rainyButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 6.5),
+            rainyLabel.topAnchor.constraint(equalTo: rainyImageView.bottomAnchor, constant: 10),
+            rainyLabel.centerXAnchor.constraint(equalTo: rainyGroup.centerXAnchor),
             
-            snowImageView.topAnchor.constraint(equalTo: snowButton.bottomAnchor, constant: -140),
-            snowImageView.heightAnchor.constraint(equalToConstant: 90),
-            snowImageView.leadingAnchor.constraint(equalTo: snowButton.leadingAnchor, constant: -30),
-            snowImageView.trailingAnchor.constraint(equalTo: snowButton.trailingAnchor, constant: 30),
+            snowButton.topAnchor.constraint(equalTo: snowGroup.topAnchor),
+            snowButton.bottomAnchor.constraint(equalTo: snowGroup.bottomAnchor),
+            snowButton.leadingAnchor.constraint(equalTo: snowGroup.leadingAnchor),
+            snowButton.trailingAnchor.constraint(equalTo: snowGroup.trailingAnchor),
             
-            snowLabel.topAnchor.constraint(equalTo: snowImageView.bottomAnchor, constant: 15),
-            snowLabel.leadingAnchor.constraint(equalTo: snowButton.leadingAnchor, constant: 35),
-            snowLabel.trailingAnchor.constraint(equalTo: snowButton.trailingAnchor, constant: -35),
+            snowImageView.topAnchor.constraint(equalTo: snowGroup.topAnchor, constant: 15),
+            snowImageView.centerXAnchor.constraint(equalTo: snowGroup.centerXAnchor),
+            snowImageView.heightAnchor.constraint(equalToConstant: 80),
+            snowImageView.widthAnchor.constraint(equalToConstant: 80),
             
-            snowButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
-            snowButton.heightAnchor.constraint(equalToConstant: 150),
-            snowButton.widthAnchor.constraint(equalToConstant: 125),
-            snowButton.leadingAnchor.constraint(equalTo: rainyButton.leadingAnchor, constant: 132),
+            snowLabel.topAnchor.constraint(equalTo: snowImageView.bottomAnchor, constant: 10),
+            snowLabel.centerXAnchor.constraint(equalTo: snowGroup.centerXAnchor),
             
-            hailImageView.topAnchor.constraint(equalTo: hailButton.bottomAnchor, constant: -140),
-            hailImageView.heightAnchor.constraint(equalToConstant: 90),
-            hailImageView.leadingAnchor.constraint(equalTo: hailButton.leadingAnchor, constant: -30),
-            hailImageView.trailingAnchor.constraint(equalTo: hailButton.trailingAnchor, constant: 30),
+            hailButton.topAnchor.constraint(equalTo: hailGroup.topAnchor),
+            hailButton.bottomAnchor.constraint(equalTo: hailGroup.bottomAnchor),
+            hailButton.leadingAnchor.constraint(equalTo: hailGroup.leadingAnchor),
+            hailButton.trailingAnchor.constraint(equalTo: hailGroup.trailingAnchor),
             
-            hailLabel.topAnchor.constraint(equalTo: hailImageView.bottomAnchor, constant: 15),
-            hailLabel.leadingAnchor.constraint(equalTo: hailButton.leadingAnchor, constant: 40),
-            hailLabel.trailingAnchor.constraint(equalTo: hailButton.trailingAnchor, constant: -40),
+            hailImageView.topAnchor.constraint(equalTo: hailGroup.topAnchor, constant: 15),
+            hailImageView.centerXAnchor.constraint(equalTo: hailGroup.centerXAnchor),
+            hailImageView.heightAnchor.constraint(equalToConstant: 80),
+            hailImageView.widthAnchor.constraint(equalToConstant: 80),
             
-            hailButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
-            hailButton.heightAnchor.constraint(equalToConstant: 150),
-            hailButton.widthAnchor.constraint(equalToConstant: 125),
-            hailButton.leadingAnchor.constraint(equalTo: snowButton.leadingAnchor, constant: 132),
+            hailLabel.topAnchor.constraint(equalTo: hailImageView.bottomAnchor, constant: 10),
+            hailLabel.centerXAnchor.constraint(equalTo: hailGroup.centerXAnchor),
             
+            stackViewWeather.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            stackViewWeather.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            stackViewWeather.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            stackViewWeather.heightAnchor.constraint(equalToConstant: 150),
+            
+            windyButton.topAnchor.constraint(equalTo: windyGroup.topAnchor),
+            windyButton.bottomAnchor.constraint(equalTo: windyGroup.bottomAnchor),
+            windyButton.leadingAnchor.constraint(equalTo: windyGroup.leadingAnchor),
+            windyButton.trailingAnchor.constraint(equalTo: windyGroup.trailingAnchor),
+            
+            windyImageView.topAnchor.constraint(equalTo: windyGroup.topAnchor, constant: 15),
+            windyImageView.centerXAnchor.constraint(equalTo: windyGroup.centerXAnchor),
+            windyImageView.heightAnchor.constraint(equalToConstant: 80),
+            windyImageView.widthAnchor.constraint(equalToConstant: 80),
+            
+            windyLabel.topAnchor.constraint(equalTo: windyImageView.bottomAnchor, constant: 10),
+            windyLabel.centerXAnchor.constraint(equalTo: windyGroup.centerXAnchor),
+            
+            foggyButton.topAnchor.constraint(equalTo: foggyGroup.topAnchor),
+            foggyButton.bottomAnchor.constraint(equalTo: foggyGroup.bottomAnchor),
+            foggyButton.leadingAnchor.constraint(equalTo: foggyGroup.leadingAnchor),
+            foggyButton.trailingAnchor.constraint(equalTo: foggyGroup.trailingAnchor),
+            
+            foggyImageView.topAnchor.constraint(equalTo: foggyGroup.topAnchor, constant: 75),
+            foggyImageView.centerXAnchor.constraint(equalTo: foggyGroup.centerXAnchor),
+            foggyImageView.heightAnchor.constraint(equalToConstant: 80),
+            foggyImageView.widthAnchor.constraint(equalToConstant: 80),
+            
+            foggyLabel.topAnchor.constraint(equalTo: foggyImageView.bottomAnchor, constant: 10),
+            foggyLabel.centerXAnchor.constraint(equalTo: foggyGroup.centerXAnchor),
+            
+            stackViewWeather2.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 210),
+            stackViewWeather2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            stackViewWeather2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            stackViewWeather2.heightAnchor.constraint(equalToConstant: 150),
             
         ])
     }

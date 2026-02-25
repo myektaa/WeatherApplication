@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "rainy2.png",
+      "filename" : "foggy.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "rainy2 1.png",
+      "filename" : "foggy 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "rainy2 2.png",
+      "filename" : "foggy 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
